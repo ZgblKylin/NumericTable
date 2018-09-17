@@ -29,17 +29,9 @@ QVariant Model::data(const QModelIndex& index, int role) const
         return (quint64(index.row()) * quint64(columnCount()) + index.column()) % 256;
     case Qt::TextAlignmentRole:
         return int(Qt::Alignment(Qt::AlignRight | Qt::AlignHCenter));
-//    case Qt::SizeHintRole:
-//        return itemSize;
     default:
         break;
     }
 
     return QVariant();
-}
-
-void Model::fontChanged(QFont font)
-{
-    QFontMetrics metrics(font);
-    itemSize = metrics.boundingRect(QStringLiteral("255")).size();
 }
