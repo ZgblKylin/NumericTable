@@ -8,8 +8,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->numerictable->setModel(new Model(this));
-    ui->numerictable->resetVerticalHeaderWidth();
-    ui->numerictable->resetColumnWidth();
 }
 
 MainWindow::~MainWindow()
