@@ -48,34 +48,35 @@ private:
     NumericTable* q;
     QAbstractTableModel* model = nullptr;
 
-    int rowHeight;      // row height exclude spacing
-    int cellTextCount;  // character count exclude spacing
-    int cellWidth;      // character count include spacing
-    int columnWidth;    // column width exclude spacing
+    int vHeaderTextCount;   // max count of vertical header text characters
+    int vHeaderWidth;       // vertical header width in pixels
+
+    int cellTextCount;      // max count of cell text characters
+    int cellWidth;          // character count include spacing
+    int columnWidth;        // column width in pixels, exclude spacing
 
     // Y axis
-    int hHeaderTop;     // horizontal header bottom
-    int hLineTop;       // horizontal line top
-    int textTop;        // text field top
+    int hHeaderTop;     // horizontal header bottom position in pixels
+    int hLineTop;       // horizontal line top position in pixels
+    int textTop;        // text field top position in pixels
+    int rowHeight;      // row height exclude spacing
 
     // X axis
-    int vHeaderTextCount;
-    int vHeaderWidth;
-    int vHeaderLeft;    // vertical header left
-    int vLineLeft;      // vertical line left
-    int textLeft;       // text field left
+    int vHeaderLeft;        // vertical header left position in pixels
+    int vLineLeft;          // vertical line left position in pixels
+    int textLeft;           // text field left position in pixels
 
-    int displayRowCount;
-    int displayColumnCount;
+    int displayRowCount;    // row count displayed based on font and widget rect
+    int displayColumnCount; // col count displayed based on font and widget rect
 
-    int vSpacing;
-    int hSpacing;
-    const int hSpacingCount = 2;
-    const int lineWidth = 2;
+    int vSpacing;                   // horizontal spacing in pixels
+    int hSpacing;                   // vertical spacing in pixels
+    const int hSpacingCount = 2;    // horizontal spacing character count(' ')
+    const int lineWidth = 2;        // horizontal and vertical line width
 
     QString emptyBuffer;
-    QVector<QString> textBuffer;    // 当前用于显示的文本内容
-    QRect bufferRect;               // textBuffer中各单元格对应的行号和列号
+    QVector<QString> textBuffer;    // current text data to be displayed
+    QRect bufferRect;               // index row and col for cells in textBuffer
 };
 
 #endif // NUMERICWIDGET_H
