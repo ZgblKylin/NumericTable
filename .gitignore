@@ -30,3 +30,19 @@
 *.exe
 *.out
 *.app
+
+# Qt project user setting
+*.pro.user
+
+# Makefile
+Makefile
+Makefile.Debug
+Makefile.Release
+object_script.*
+
+# Qt moc files
+ui_*.h
+moc_*.cpp
+moc_*.h
+qrc_*.cpp
+*.moc
