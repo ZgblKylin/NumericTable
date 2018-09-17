@@ -3,6 +3,24 @@
 #include <QtCore/QEvent>
 #include <QtGui/QFontDatabase>
 
+class FontLoader
+{
+public:
+    FontLoader() = default;
+    void load()
+    {
+        if (loaded) return;
+        loaded = true;
+        QFontDatabase::addApplicationFont(QStringLiteral(":/Fonts/consola.ttf"));
+        QFontDatabase::addApplicationFont(QStringLiteral(":/Fonts/consolab.ttf"));
+        QFontDatabase::addApplicationFont(QStringLiteral(":/Fonts/consolai.ttf"));
+        QFontDatabase::addApplicationFont(QStringLiteral(":/Fonts/consolaz.ttf"));
+    }
+private:
+    bool loaded = false;
+};
+Q_GLOBAL_STATIC(FontLoader, fontLoader)
+
 NumericTablePrivate::NumericTablePrivate(NumericTable* parent)
     : QObject(parent),
       layout(new QGridLayout(parent)),
@@ -10,10 +28,7 @@ NumericTablePrivate::NumericTablePrivate(NumericTable* parent)
       verticalScrollBar(new QScrollBar(Qt::Vertical, parent)),
       widget(new NumericWidget(parent))
 {
-    QFontDatabase::addApplicationFont(QStringLiteral(":/Fonts/consola.ttf"));
-    QFontDatabase::addApplicationFont(QStringLiteral(":/Fonts/consolab.ttf"));
-    QFontDatabase::addApplicationFont(QStringLiteral(":/Fonts/consolai.ttf"));
-    QFontDatabase::addApplicationFont(QStringLiteral(":/Fonts/consolaz.ttf"));
+    fontLoader->load();
 
     parent->resize(400, 300);
 
