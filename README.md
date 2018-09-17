@@ -11,7 +11,6 @@ Qt table view used to display huge amount of numeric values
 - Qt Designer plugin support
 - Only ASCII characters supported in data fields
 - UTF-8 text supported in headers
-- Optimized for large count of rows, not columns
 
 
 
